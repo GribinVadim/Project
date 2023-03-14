@@ -20,9 +20,7 @@ jobs:
       - name: github-action-auto-format
         uses: cloudposse/github-action-auto-format@v0.12.0
         with:
-         format-task: ${{ matrix.format-task }}
-         workflow-token: ${{ secrets.workflow-token }}
-         bot-name: ${{ inputs.bot-name }}
+         workflow-token: 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
         
   Second_test:
     needs: [ First_test ]
