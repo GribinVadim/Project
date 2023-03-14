@@ -12,13 +12,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Run a one-line script
-        run: |
+      - name: Print the input name to STDOUT
+        run: echo The username is ${{ inputs.username }} |
          pwd
          ls -la
          echo Hello
       - name: github-action-auto-format
         uses: cloudposse/github-action-auto-format@v0.12.0
+        with:
+         format-task: ${{ matrix.format-task }}
+         workflow-token: ${{ secrets.workflow-token }}
+         bot-name: ${{ inputs.bot-name }}
+        
   Second_test:
     needs: [ First_test ]
     runs-on: ubuntu-latest
