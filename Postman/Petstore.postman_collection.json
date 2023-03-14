@@ -1,0 +1,222 @@
+{
+	"info": {
+		"_postman_id": "c8ed35b6-df39-4f99-8f32-294924325df0",
+		"name": "Petstore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24725243"
+	},
+	"item": [
+		{
+			"name": "api_create_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 1000 ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"pm.test(\"Status code OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"pm.test(\"Check the active environment\", () => {\r",
+							"  pm.expect(pm.environment.name).to.eql(\"PetStore\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 2,\r\n  \"username\": \"Ivan\",\r\n  \"firstName\": \"Petrovich\",\r\n  \"lastName\": \"Sidorov\",\r\n  \"email\": \"post@mail.ru\",\r\n  \"password\": \"123456\",\r\n  \"phone\": \"89991237896\",\r\n  \"userStatus\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/user",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api_get_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"The username field has a text value\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"username\");\r",
+							"});\r",
+							"const jsonData = pm.response.json();\r",
+							"pm.test(\"The id field has a numeric value\", () => {\r",
+							"pm.expect(jsonData.id).to.be.a(\"number\");\r",
+							"});\r",
+							"pm.test(\"Response time is less than 1000 ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "username",
+						"value": "Ivan",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/user/Ivan",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"user",
+						"Ivan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api_updated_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 1000 ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"pm.test(\"Status code OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 10,\r\n  \"username\": \"Vadim\",\r\n  \"firstName\": \"Gribin\",\r\n  \"lastName\": \"Nikolaevich\",\r\n  \"email\": \"post@yandex.ru.ru\",\r\n  \"password\": \"6543211\",\r\n  \"phone\": \"8(666)321-78-96\",\r\n  \"userStatus\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/user/Ivan",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"user",
+						"Ivan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api_delete_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 1000 ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"pm.test(\"The username field has a text value\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"message\");\r",
+							"    });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 10,\r\n  \"username\": \"Vadim\",\r\n  \"firstName\": \"Gribin\",\r\n  \"lastName\": \"Nikolaevich\",\r\n  \"email\": \"post@yandex.ru.ru\",\r\n  \"password\": \"6543211\",\r\n  \"phone\": \"8(666)321-78-96\",\r\n  \"userStatus\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/user/Vadim",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"user",
+						"Vadim"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
