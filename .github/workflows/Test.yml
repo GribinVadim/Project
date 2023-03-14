@@ -1,4 +1,4 @@
-name: CI
+name: Test
 
 on:
   push:
@@ -14,22 +14,29 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run a one-line script
         run: |
+         pwd
+         ls -la
          docker build .
          pwd
-         ls -la
-         echo This is my homework
-         pwd
-         ls -la
-         echo Thanks for watching
-   Second_test:
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+  Second_test:
     needs: [ First_test ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Run a one-line script
+        run: |
+         pwd
+         ls -la
+         echo Hello, world!
+         pwd
+         docker build .
+         find . -name '*.pyc' -delete
+         ls -la
       - name: Run a multi-line script
         run: |
-          docker build .
-          find . -name '*.pyc' -delete
-          ls -la
           echo Add other actions to build,
-          echo test, and deploy your project.
+          echo test, and deploy your project. 
