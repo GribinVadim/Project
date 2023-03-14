@@ -16,7 +16,6 @@ jobs:
         run: |
          pwd
          ls -la
-         
          pwd
       - name: Run a multi-line script
         run: |
@@ -31,9 +30,7 @@ jobs:
         run: |
          pwd
          ls -la
-         echo Hello, world!
          pwd
-         docker build .
          find . -name '*.pyc' -delete
          ls -la
       - name: Run a multi-line script
