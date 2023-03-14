@@ -17,11 +17,7 @@ jobs:
          pwd
          ls -la
          echo Hello
-      - name: github-action-auto-format
-        uses: cloudposse/github-action-auto-format@v0.12.0
-        with:
-         workflow-token: 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
-        
+             
   Second_test:
     needs: [ First_test ]
     runs-on: ubuntu-latest
