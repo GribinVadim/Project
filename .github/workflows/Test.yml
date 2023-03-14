@@ -16,7 +16,7 @@ jobs:
         run: |
          pwd
          ls -la
-         docker build .
+         
          pwd
       - name: Run a multi-line script
         run: |
@@ -26,8 +26,8 @@ jobs:
     needs: [ First_test ]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Run a one-line script
+      - uses: actions/setup-node@v3.6.0
+      - name: Setup Node.js environment
         run: |
          pwd
          ls -la
