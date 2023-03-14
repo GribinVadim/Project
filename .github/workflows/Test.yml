@@ -1,31 +1,35 @@
-name: Test
+name: CI
 
 on:
-  
   push:
-    branches: [ "main", "develop" ]
+    branches: [ "main", "develop"]
   pull_request:
-    branches: [ "main", "develop" ]
+    branches: [ "main", "develop"]
 
- 
+
 jobs:
-  # This workflow contains a single job called "build"
   First_test:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
-      # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo Start!
-  Second_test:
+        run: |
+         docker build .
+         pwd
+         ls -la
+         echo This is my homework
+         pwd
+         ls -la
+         echo Thanks for watching
+   Second_test:
     needs: [ First_test ]
     runs-on: ubuntu-latest
-      # Runs a set of commands using the runners shell
-    steps:  
-      - name: Setup Node.js environment
-      - uses: actions/setup-node@v3.6.0
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run a multi-line script
+        run: |
+          docker build .
+          find . -name '*.pyc' -delete
+          ls -la
+          echo Add other actions to build,
+          echo test, and deploy your project.
