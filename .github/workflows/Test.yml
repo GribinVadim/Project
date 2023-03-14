@@ -1,0 +1,36 @@
+name: Test
+
+on:
+  push:
+    branches: [ "main", "develop"]
+  pull_request:
+    branches: [ "main", "develop"]
+
+
+jobs:
+  First_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Print the input name to STDOUT
+        run: echo The username is ${{ inputs.username }} |
+         pwd
+         ls -la
+         echo Hello
+             
+  Second_test:
+    needs: [ First_test ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v3.6.0
+      - name: Setup Node.js environment
+        run: |
+         pwd
+         ls -la
+         pwd
+         find . -name '*.pyc' -delete
+         ls -la
+      - name: Run a multi-line script
+        run: |
+          echo This section is under development,
+          echo We apologize. 
