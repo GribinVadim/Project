@@ -12,16 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      name: setup node
+    - uses: actions/hello-world-javascript-action@main
       with:
-        node-version: '13.x'
-
-    - name: "test"
-      run: npm run test
-
-    - name: "build"
-      run: npm run build
+       who-to-greet: "Mona the Octocat"
          
              
   Second_test:
