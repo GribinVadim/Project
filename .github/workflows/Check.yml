@@ -1,0 +1,45 @@
+name: Check
+
+on:
+  push:
+    branches: [ "main", "develop"]
+  pull_request:
+    branches: [ "main", "develop"]
+
+
+jobs:
+  First_test:
+    runs-on: ubuntu-latest
+     steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      name: setup node
+      with:
+        node-version: '13.x'
+
+    - name: "install"
+      run: npm ci --production
+
+    - name: "test"
+      run: npm run test
+
+    - name: "build"
+      run: npm run build
+         
+             
+  Second_test:
+    needs: [ First_test ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v3.6.0
+      - name: Setup Node.js environment
+        run: |
+         pwd
+         ls -la
+         pwd
+         find . -name '*.pyc' -delete
+         ls -la
+      - name: Run a multi-line script
+        run: |
+          echo This section is under development,
+          echo We apologize. 
