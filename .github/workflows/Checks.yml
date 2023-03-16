@@ -11,7 +11,7 @@ jobs:
   First_check:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: actions/hello-world-javascript-action@main
       with:
        who-to-greet: "Hello, World"
