@@ -22,17 +22,24 @@ jobs:
     needs: [ First_check ]
     runs-on: ubuntu-latest
     steps:
-    - name: Run a multi-line script
-      run: |
-       - uses: actions/setup-node@v3.6.0
-       - name: Setup Node.js environment
+      - uses: actions/setup-node@v3.6.0
+      - name: Setup Node.js environment
+         run:|
+           pwd
+           ls -la
+           pwd
+           find . -name '*.pyc' -delete
+          ls -la
         run: |
          pwd
          ls -la
          pwd
          find . -name '*.pyc' -delete
          ls -la
-       - uses: harupy/auto-labeling@master
+      - name: Run a multi-line script
+        run: |
+          echo This section is under development,
+          echo We apologize. 
+      - uses: harupy/auto-labeling@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          label-pattern: '- \[(.*?)\] ?`(.+?)`'
