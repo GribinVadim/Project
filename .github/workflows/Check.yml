@@ -13,8 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/hello-world-javascript-action@main
-      with:
-       who-to-greet: "Mona the Octocat"
+      
          
              
   Second_test:
@@ -23,13 +22,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v3.6.0
       - name: Setup Node.js environment
-        run: |
-         pwd
-         ls -la
-         pwd
-         find . -name '*.pyc' -delete
-         ls -la
-      - name: Run a multi-line script
-        run: |
-          echo This section is under development,
-          echo We apologize. 
+      - uses: harupy/auto-labeling@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          label-pattern: '- \[(.*?)\] ?`(.+?)`'
