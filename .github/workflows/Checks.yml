@@ -8,7 +8,7 @@ on:
 
 
 jobs:
-  First_test:
+  First_check:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -18,23 +18,21 @@ jobs:
       
          
              
-  Second_test:
-    needs: [ First_test ]
+  Second_check:
+    needs: [ First_check ]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v3.6.0
-      - name: Setup Node.js environment
+    - name: Run a multi-line script
+      run: |
+       - uses: actions/setup-node@v3.6.0
+       - name: Setup Node.js environment
         run: |
          pwd
          ls -la
          pwd
          find . -name '*.pyc' -delete
          ls -la
-      - name: Run a multi-line script
-        run: |
-          echo This section is under development,
-          echo We apologize. 
-      - uses: harupy/auto-labeling@master
+       - uses: harupy/auto-labeling@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           label-pattern: '- \[(.*?)\] ?`(.+?)`'
