@@ -24,12 +24,6 @@ jobs:
     steps:
       - uses: actions/setup-node@v3.6.0
       - name: Setup Node.js environment
-         run:|
-           pwd
-           ls -la
-           pwd
-           find . -name '*.pyc' -delete
-          ls -la
         run: |
          pwd
          ls -la
@@ -43,3 +37,4 @@ jobs:
       - uses: harupy/auto-labeling@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          label-pattern: '- \[(.*?)\] ?`(.+?)`'
