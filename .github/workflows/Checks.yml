@@ -12,7 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+      - name: Run the sh-checker
+        uses: luizm/action-sh-checker@master
   Python:
     needs: [ Checkout ]
     runs-on: ubuntu-latest
