@@ -12,13 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: initialization
-        continue-on-error: true
-        run: |
-           sudo apt -y install python3
-           sudo apt -y install shellcheck
-      - name: Validate syntax
-        run: bash -n *.sh
+      - name: pre-commit-config-shellcheck
+        uses: action/pre-commit-config-shellcheck@0.3.4
   Python:
     needs: [ Checkout ]
     runs-on: ubuntu-latest
