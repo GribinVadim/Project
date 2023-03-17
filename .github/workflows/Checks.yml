@@ -8,19 +8,27 @@ on:
 
 
 jobs:
-  First_check:
+  Checkout:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      
+  Python:
+    needs: [ Checkout ]
+    runs-on: ubuntu-latest
+    steps: 
       - uses: cclauss/Find-Python-syntax-errors-action@master
-  Second_check:
-    needs: [ First_check ]
+      
+  Bash:
+    needs: [ Checkout ]
     runs-on: ubuntu-latest
     steps:
       - name: Validate syntax
-        run: bash -n *.sh
+        run: |
+         cd bash_script
+         bash -n *.sh
   check:
-   needs: [ First_check ]
+   needs: [ Checkout ]
    runs-on: ubuntu-latest
    steps:
       - uses: actions/setup-node@v3.6.0
