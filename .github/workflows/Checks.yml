@@ -12,21 +12,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+      - name: initialization
+        continue-on-error: true
+        run: |
+           sudo apt -y install python3
+           sudo apt -y install shellcheck
+      - name: Validate syntax
+        run: bash -n *.sh
   Python:
     needs: [ Checkout ]
     runs-on: ubuntu-latest
     steps: 
       - uses: cclauss/Find-Python-syntax-errors-action@master
       
-  Bash:
-    needs: [ Checkout ]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Validate syntax
-        run: |
-         cd bash_script
-         bash -n *.sh
   check:
    needs: [ Checkout ]
    runs-on: ubuntu-latest
