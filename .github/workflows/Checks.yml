@@ -17,7 +17,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SHELLCHECK_OPTS: -e SC2002 # exclude some shellcheck warnings.
-          SHFMT_OPTS: -s # arguments to shfmt.
+          SHFMT_OPTS: -s -w # arguments to shfmt.
         
   Python:
     needs: [ Checkout ]
