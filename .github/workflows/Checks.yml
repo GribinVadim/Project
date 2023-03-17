@@ -13,10 +13,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: cclauss/Find-Python-syntax-errors-action@master
-      - run: codespell 
   Second_check:
     needs: [ First_check ]
     runs-on: ubuntu-latest
+    steps:
+      - name: Validate syntax
+        run: bash -n *.sh
+  3_check:
+   needs: [ First_check ]
+   runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-node@v3.6.0
         with:
@@ -28,11 +33,4 @@ jobs:
          pwd
          find . -name '*.pyc' -delete
          ls -la
-      - name: Run a multi-line script
-        run: |
-          echo This section is under development,
-          echo We apologize. 
-      - uses: harupy/auto-labeling@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          label-pattern: '- \[(.*?)\] ?`(.+?)`'
+     
