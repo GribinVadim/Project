@@ -6,8 +6,8 @@ if [ -e students.txt ]; then
   else
   echo "Списка студентов нет"
 fi
-for students in Вадим Андрей Света Лера
+  for students in Вадим Андрей Света Лера
 do
-echo "$students" >> students.txt
+  echo "$students" >> students.txt
 done
-echo "Преподаватель: Пётр" && echo "Список студентов:" && sort -d  students.txt && echo "К доске идет:" && cat students.txt | shuf -n1
+echo "Преподаватель: Пётр" && echo "Список студентов:" && sort -d students.txt && echo "К доске идет:" && cat students.txt | shuf -n1
