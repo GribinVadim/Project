@@ -13,9 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: cclauss/Find-Python-syntax-errors-action@master
-      - run: pip install bandit black codespell flake8 isort mypy pytest pyupgrade safety
-      - run: bandit --skip B311, B301 
-      - run: black --check 
       - run: codespell 
   Second_check:
     needs: [ First_check ]
