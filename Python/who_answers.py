@@ -2,7 +2,7 @@ import random
 import datetime
 now = datetime.datetime.now()
 print(now.strftime("%d-%m-%Y %A"))
-Prepod = input("Введите имя преподователя")
+Prepod = ["Пётр"]
 Students = ["Вадим", "Лера", "Андрей", "Света"]
 for str in Students:
     Students.sort()
