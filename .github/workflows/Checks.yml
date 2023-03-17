@@ -1,4 +1,4 @@
-name: Check
+name: Checks
 
 on:
   push:
@@ -12,17 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: pre-commit
-  # You may pin to the exact commit or the version.
-  # uses: pre-commit/action@646c83fcd040023954eafda54b4db0192ce70507
-        uses: pre-commit/action@v3.0.0
+      
   Python:
     needs: [ Checkout ]
     runs-on: ubuntu-latest
     steps: 
       - uses: cclauss/Find-Python-syntax-errors-action@master
       
-  check:
+  Node_js:
    needs: [ Checkout ]
    runs-on: ubuntu-latest
    steps:
