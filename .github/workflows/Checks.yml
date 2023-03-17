@@ -12,16 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Konstruktoid Python linting
-        uses: konstruktoid/action-pylint@master
-         set -euf
-
-         if [ -f ./requirements.txt ]; then
-         safety check --bare --file ./requirements.txt
-         fi
-         bandit --silent --recursive .
-         black --check --diff --no-color --quiet .
-         flake8     
+      - name: Python quality and format checker
+        uses: konstruktoid/action-pylint@v0.1.1     
   Second_check:
     needs: [ First_check ]
     runs-on: ubuntu-latest
