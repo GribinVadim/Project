@@ -9,4 +9,5 @@ for str in Students:
     print("Преподователь:", Prepod)
     print("Список студентов:", *Students, sep="\n")
     break
+
 print("К доске идет:" + random.choice(Students))
