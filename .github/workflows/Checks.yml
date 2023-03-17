@@ -12,10 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: actions/hello-world-javascript-action@main
-      with:
-       who-to-greet: "Hello, World"
-      
+    - uses: actions/checkout@master
+    - name: Konstruktoid Python linting
+    - uses: konstruktoid/action-pylint@master
          
              
   Second_check:
