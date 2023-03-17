@@ -19,10 +19,10 @@ jobs:
     steps:
       - name: Validate syntax
         run: bash -n *.sh
-  3_check:
+  check:
    needs: [ First_check ]
    runs-on: ubuntu-latest
-    steps:
+   steps:
       - uses: actions/setup-node@v3.6.0
         with:
           node-version: 16.x
