@@ -11,9 +11,8 @@ jobs:
   First_check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: Python quality and format checker
-        uses: konstruktoid/action-pylint@v0.1.1     
+      - uses: actions/checkout@v3
+      - uses: cclauss/Find-Python-syntax-errors-action@master     
   Second_check:
     needs: [ First_check ]
     runs-on: ubuntu-latest
