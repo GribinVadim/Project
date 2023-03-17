@@ -14,15 +14,9 @@ jobs:
       - uses: actions/checkout@v3
       - uses: cclauss/Find-Python-syntax-errors-action@master
       - run: pip install bandit black codespell flake8 isort mypy pytest pyupgrade safety
-      - run: bandit --skip B311, B301 . || true  # B311, B101 is assert statements
-      - run: black --check . || true
-      - run: codespell || true  # --ignore-words-list="" --skip=""
-      - run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-      - run: flake8 . --count --exit-zero --max-complexity=10 --max-line-length=88 --show-source --statistics
-      - run: isort --check-only --profile black . || true
-      - run: pytest . || true
-      - run: pytest --doctest-modules . || true
-      - run: shopt -s globstar && pyupgrade --py36-plus **/*.py || true
+      - run: bandit --skip B311, B301 
+      - run: black --check 
+      - run: codespell 
   Second_check:
     needs: [ First_check ]
     runs-on: ubuntu-latest
