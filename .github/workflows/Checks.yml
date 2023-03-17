@@ -11,10 +11,10 @@ jobs:
   First_check:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/checkout@master
-    - name: Konstruktoid Python linting
-    - uses: konstruktoid/action-pylint@master
+      - uses: actions/checkout@v3
+      - uses: actions/checkout@master
+      - name: Konstruktoid Python linting
+      - uses: konstruktoid/action-pylint@master
          
              
   Second_check:
