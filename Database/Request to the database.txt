@@ -1,0 +1,1 @@
+SELECT Users.User_id, Authorization.Login, Users.First_name, Users.Last_name, Balances.Amount, Messages.Text_message FROM Users JOIN  Balances ON Users.User_id = Balances.User_id JOIN Messages ON Users.User_id = Messages.User_id Join Authorization ON Users.Id = Authorization.Id WHERE Balances.Amount>0  ORDER BY Balances.Amount;
