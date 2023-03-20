@@ -12,6 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      
+  Shell:
+    needs: [ Checkout ]
+    runs-on: ubuntu-latest
+    steps:
       - name: Run the sh-checker
         uses: luizm/action-sh-checker@master
         env:
@@ -19,8 +24,7 @@ jobs:
           SHELLCHECK_OPTS: -e SC2002 # exclude some shellcheck warnings.
           SHFMT_OPTS: -s # arguments to shfmt.
         with:
-          sh_checker_comment: true
-        
+          sh_checker_comment: true      
   Python:
     needs: [ Checkout ]
     runs-on: ubuntu-latest
