@@ -29,8 +29,10 @@ jobs:
     needs: [ Checkout ]
     runs-on: ubuntu-latest
     steps: 
-      -  name: Python Linter
-         uses: sunnysid3up/python-linter@v0.1-beta.7
+      - name: Run Pyre Action
+        uses: facebook/pyre-action@v0.0.1
+        with:
+           repo-directory: './'
   Node_js:
    needs: [ Checkout ]
    runs-on: ubuntu-latest
