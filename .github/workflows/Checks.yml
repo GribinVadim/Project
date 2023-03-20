@@ -29,18 +29,8 @@ jobs:
     needs: [ Checkout ]
     runs-on: ubuntu-latest
     steps: 
-      - uses: actions/setup-python@v3
-      - run: pip install bandit black codespell flake8 isort mypy pytest pyupgrade safety
-      - run: bandit --recursive --skip B101 . 
-      - run: black --check . 
-      - run: codespell 
-      - run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-      - run: flake8 . --count --exit-zero --max-complexity=10 --max-line-length=88 --show-source --statistics
-      - run: isort --check-only --profile black . 
-       
-      - run: pytest --doctest-modules . 
-      - run: shopt -s globstar && pyupgrade --py36-plus **/*.py 
-      
+      -  name: Python Linter
+         uses: sunnysid3up/python-linter@v0.1-beta.7
   Node_js:
    needs: [ Checkout ]
    runs-on: ubuntu-latest
