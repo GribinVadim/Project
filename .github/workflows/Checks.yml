@@ -17,6 +17,7 @@ jobs:
     needs: [ Checkout ]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3 
       - name: Run the sh-checker
         uses: luizm/action-sh-checker@master
         env:
@@ -26,17 +27,22 @@ jobs:
         with:
           sh_checker_comment: true      
   Python:
-    needs: [ Checkout ]
     runs-on: ubuntu-latest
-    steps: 
-      - name: Run Pyre Action
-        uses: facebook/pyre-action@v0.0.1
-        with:
-           repo-directory: './'
+    steps:
+     - uses: actions/checkout@v3  
+     - name: Python Linter
+       uses: sunnysid3up/python-linter@master
+       with:
+        source: "src"
+        mypy-options: "--ignore-missing-imports --show-error-codes"
+        pylint-options: "--rcfile=setup.cfg"
+        isort-options: "-w 100"
+        django: true
   Node_js:
    needs: [ Checkout ]
    runs-on: ubuntu-latest
    steps:
+      - uses: actions/checkout@v3 
       - uses: actions/setup-node@v3.6.0
         with:
           node-version: 16.x
