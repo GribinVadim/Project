@@ -8,49 +8,10 @@ on:
 
 
 jobs:
-  Checkout:
+  Linter:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+        - uses: actions/checkout@v2
+        - uses: docker://github/super-linter:v2.1.0
       
-  Shell:
-    needs: [ Checkout ]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3 
-      - name: Run the sh-checker
-        uses: luizm/action-sh-checker@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SHELLCHECK_OPTS: -e SC2002 
-          SHFMT_OPTS: -s 
-        with:
-          sh_checker_comment: true      
-  Python:
-    runs-on: ubuntu-latest
-    steps:
-     - uses: actions/checkout@v3  
-     - name: Python Linter
-       uses: sunnysid3up/python-linter@master
-       with:
-        source: "src"
-        mypy-options: "--ignore-missing-imports --show-error-codes"
-        pylint-options: "--rcfile=setup.cfg"
-        isort-options: "-w 100"
-        django: true
-  Node_js:
-   needs: [ Checkout ]
-   runs-on: ubuntu-latest
-   steps:
-      - uses: actions/checkout@v3 
-      - uses: actions/setup-node@v3.6.0
-        with:
-          node-version: 16.x
-      - name: Setup Node.js environment
-        run: |
-         pwd
-         ls -la
-         pwd
-         find . -name '*.pyc' -delete
-         ls -la
-     
+  
